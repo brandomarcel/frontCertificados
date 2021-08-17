@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-button style="padding-right: 10px;"  (click)="logOut()" slot="start" class="btn_Añadir"color="tertiary">
+      <ion-icon  expand="full"  name="home"></ion-icon>
+    </ion-button> -->
+   <ion-grid>
+     <ion-row>
+       <ion-col>
+        <ion-text style="padding-left: 10px;"> <ion-icon  style="padding-left: 20px;" name="accessibility"></ion-icon>{{lisUsuario.nombre}}</ion-text>
+     
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+   <ion-button style="padding-right: 10px;"  (click)="logout()" slot="end" class="btn_Añadir"color="danger">
+    <ion-icon  expand="full"  name="log-out"></ion-icon>SALIR
+  </ion-button>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title  style="text-align: center;">
+      CURSOS CULMINADOS
+    </ion-card-title>
+  <ion-grid *ngFor="let item of lisCursos.detalleUsu">
+    <ion-row >
+      <ion-col style="font-size: 20px; padding-bottom: 10px; padding-right: 10px;padding-left: 10px;">
+
+    
+        <ion-item button (click)="cargarCertificados(item)"><ion-icon href=""></ion-icon>
+          <ion-img  style="width: 80px; height: 80px;"  src='/assets/imagenes/carpeta.png' ></ion-img>
+               {{item.nombreCurso}}
+        </ion-item> 
+        
+      </ion-col>
+    </ion-row>  
+  </ion-grid>
+</ion-card>
+<ion-card-title style="padding-left: 30px;">
+  CERTIFICADOS OBTENIDOS
+</ion-card-title>
+
+
+<ion-grid>
+
+<ion-row>
+
+<ion-col *ngFor="let cert of lisCertificados.detalleCurso">
+<ion-card>
+  <ion-card-content style="color: rgb(0, 0, 0);">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-lg="4" size-md="4" size-sm="4" size="4">
+          <ion-img style="width: 80px; height: 80px;" src="/assets/imagenes/diploma.png"></ion-img>
+        </ion-col>
+        <ion-col size-lg="8" size-md="8" size-sm="8" size="8">
+
+          <b><h2> {{cert.nombreCertificado}}</h2></b>
+          
+        </ion-col>
+        <ion-col style="align-items: center;" size-md="12">
+
+          <ion-button expand="full"  (click)="crearPDF(cert)" >DESCARGAR</ion-button>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+
+</ion-col>
+
+</ion-row>
+
+</ion-grid>
+
+
+<ion-grid>
+
+  <ion-row>
+  
+  <ion-col *ngFor="let soli of lisCursos.certVip">
+  <ion-card>
+    <ion-card-content style="color: rgb(0, 0, 0);">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-lg="4" size-md="4" size-sm="4" size="4">
+            <ion-img style="width: 80px; height: 80px;" src="/assets/imagenes/diploma.png"></ion-img>
+          </ion-col>
+          <ion-col size-lg="8" size-md="8" size-sm="8" size="8">
+  
+            <b><h1> {{soli.nomCertificado}}</h1></b>
+            
+          </ion-col>
+          <ion-col style="align-items: center;" size-md="12">
+  
+            <ion-button expand="full"  (click)="crearPDFsolicitados(soli)" >DESCARGAR</ion-button>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
+  
+  </ion-col>
+  
+  </ion-row>
+  
+  </ion-grid>
+
+
+</ion-content>
